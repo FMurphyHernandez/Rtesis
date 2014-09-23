@@ -16,9 +16,9 @@ OBS=matrix(c(1,0,0,0,1,2,0,0,1,0,1,0,
 P=OBS/n
 
 
-m=1000
+m=100000
 F=0
-n=200
+n=82
 J=0
 
 for(a in 1:m){
@@ -29,7 +29,6 @@ for(a in 1:m){
         i=((S[k]-j)/12)+1
         X[i,j]=1+X[i,j]
         }
-sum(X)
 J[a]=sum(X)
 
 
@@ -42,7 +41,7 @@ x.obs
 
 for(r in 1:12){
     for(s in 1:12){
-        q.obs=q.obs+((X[r,s]-(((x.obs[r]*y.obs[s])/n)^2))                /(x.obs[r]*y.obs[s])/n))
+        q.obs=q.obs+ ((X[r,s]-(x.obs[s]*y.obs[r]/n))^2)/(x.obs[s]*y.obs[r]/n)
         }
     }
 q.obs
@@ -52,10 +51,6 @@ q.obs
 F
 
 plot(ecdf(F))
-
-
-
-
 
 H=rchisq(m, 121)
 lines(ecdf(H))
