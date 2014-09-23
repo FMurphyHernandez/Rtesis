@@ -24,11 +24,12 @@ J=0
 for(a in 1:m){
     S=sample(1:144,n,replace=TRUE)
     X=matrix(1:144,ncol=12)*0
-    for(k in 1:144){
+    for(k in 1:n){
         j=((S[k]-1)%%12)+1
         i=((S[k]-j)/12)+1
         X[i,j]=1+X[i,j]
         }
+sum(X)
 J[a]=sum(X)
 
 
@@ -41,7 +42,7 @@ x.obs
 
 for(r in 1:12){
     for(s in 1:12){
-        q.obs=q.obs+((X[r,s]-(x.obs[r]*y.obs[s])/n)^2)/((x.obs[r]*y.obs[s])/n)
+        q.obs=q.obs+((X[r,s]-(((x.obs[r]*y.obs[s])/n)^2))                /(x.obs[r]*y.obs[s])/n))
         }
     }
 q.obs
