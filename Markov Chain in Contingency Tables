@@ -21,6 +21,7 @@ x=0
 y=c(0,0)
 z=c(0,0)
 i=0
+ptm <- proc.time()
 while(i<m){
   x=rbinom(1,1,.5)
   y=sample(1:12,2,FALSE)
@@ -40,3 +41,4 @@ while(i<m){
     i=i+1
     }
   }
+proc.time() - ptm
